@@ -1,6 +1,6 @@
 {
   "name": "notion-clean-export",
-  "version": "0.4.2",
+  "version": "0.0.1",
   "description": "Cli for formatting notion exported content",
   "author": "Luan Raithz <luanraithz@gmail.com>",
   "repository": "",

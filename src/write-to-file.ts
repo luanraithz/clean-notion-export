@@ -81,7 +81,6 @@ export function writeToFile(path: string, root: OutputContentRoot): void {
       const textFileExt = ["md"]
       if (textFileExt.some(c => node.content.name.endsWith(c))) {
         const text = fileValue.toString()
-        console.log(p)
         writeFileSync(p, renameLinks(text, map))
       } else {
         writeFileSync(p, fileValue)

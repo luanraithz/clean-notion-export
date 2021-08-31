@@ -1,4 +1,4 @@
-import fs, { existsSync, readFileSync, writeFileSync } from "fs";
+import fs, { readFileSync } from "fs";
 import { join, extname, basename } from "path"
 
 const guidRegexp = /\s*[({]?[a-fA-F0-9]{8}[-]?([a-fA-F0-9]{4}[-]?){3}[a-fA-F0-9]{12}[})]?$/g
@@ -21,7 +21,6 @@ export function getNewName(n: string, { toLower = true, removeWhiteSpaces = true
 
   return `${formatedValue}${extension}`
 }
-
 
 export type ContentRoot = {
   name: string,
@@ -51,23 +50,14 @@ export type OutputContentNode = {
 export function mapToNewNames(root: ContentRoot): OutputContentRoot {
   function innerMap(innerRoot: ContentNode): OutputContentNode {
     const children = innerRoot.children.map(n => {
-      if (!n.children.length) {
-        const name = getNewName(n.name)
-        return {
-          name,
-          content: n,
-          children: [],
-          isDir: false
-        } as OutputContentNode;
-      } else {
-        const name = getNewName(n.name)
-        return {
-          name,
-          content: n,
-          children: n.children.map(c => innerMap(c)),
-          isDir: true
-        } as OutputContentNode;
-      }
+      const hasChildren = Boolean(n.children.length)
+      const name = getNewName(n.name)
+      return {
+        name,
+        content: n,
+        children: n.children.map(c => innerMap(c)),
+        isDir: hasChildren
+      } as OutputContentNode;
     });
 
     return {
