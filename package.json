@@ -1,6 +1,6 @@
 {
   "name": "clean-notion-export",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cli for formatting notion exported content",
   "author": "Luan Raithz <luanraithz@gmail.com>",
   "repository": "",
@@ -13,7 +13,7 @@
   "main": "./dist/tsc/main.js",
   "types": "./dist/tsc/main.d.ts",
   "bin": {
-    "notion-clear-export": "./dist/tsc/cli.js"
+    "clean-notion-export": "./dist/tsc/cli.js"
   },
   "scripts": {
     "cli": "ts-node src/cli.ts --entry C:\\Users\\Luan.machado\\Downloads\\Export-92664457-ad74-4e22-9136-452bbfb8657c --output output",
