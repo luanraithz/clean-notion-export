@@ -1,5 +1,5 @@
 {
-  "name": "notion-clean-export",
+  "name": "clean-notion-export",
   "version": "0.0.1",
   "description": "Cli for formatting notion exported content",
   "author": "Luan Raithz <luanraithz@gmail.com>",
