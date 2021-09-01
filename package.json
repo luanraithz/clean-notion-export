@@ -1,6 +1,6 @@
 {
   "name": "clean-notion-export",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Cli for formatting notion exported content",
   "author": "Luan Raithz <luanraithz@gmail.com>",
   "repository": "",
@@ -16,14 +16,11 @@
     "clean-notion-export": "./dist/tsc/cli.js"
   },
   "scripts": {
-    "cli": "ts-node src/cli.ts --entry C:\\Users\\Luan.machado\\Documents\\tests-notion\\Export-21c9a59e-ba96-42a4-a3dc-0682757cb259 --output output",
+    "cli": "ts-node src/cli.ts --output output",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "jest",
-    "clean": "rm -rf dist build package",
-    "ts-node": "ts-node",
-    "build": "tsc -p tsconfig.json",
-    "build-all": "yarn clean && yarn build && yarn esbuild-node && yarn esbuild-browser",
-    "esbuild-node": "esbuild src/cli.ts --bundle --platform=node --minify --sourcemap=external --outfile=dist/esbuild/cli.js"
+    "clean": "rm -rf dist",
+    "build": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
