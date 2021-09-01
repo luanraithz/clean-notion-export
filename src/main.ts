@@ -1,4 +1,4 @@
-import fs, { readFileSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import { join, extname, basename } from "path"
 
 const guidRegexp = /\s*[({]?[a-fA-F0-9]{8}[-]?([a-fA-F0-9]{4}[-]?){3}[a-fA-F0-9]{12}[})]?$/g
@@ -95,7 +95,7 @@ export const printStruct = (root: { name: string, children: Array<{ name: string
 
 export function listDirRecursive(absolutePath: string): ContentRoot {
   function innerMap(absolutePath: string, relativePath: string): ContentNode {
-    const files = fs.readdirSync(absolutePath, { withFileTypes: true })
+    const files = readdirSync(absolutePath, { withFileTypes: true })
     const children: ContentNode[] = files.map(f => {
       const relative = join(relativePath, f.name)
       const absolute = join(absolutePath, f.name)

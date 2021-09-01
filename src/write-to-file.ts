@@ -24,7 +24,8 @@ const renameLinks = (text: string, refMap: ContentMap): string => {
         const csv = splitted[splitted.length - 1]
         const content = refMap.get(decodeURI(csv))
         if (!content || !isContentNode(content) || !content.content.file) {
-          throw new Error(`Csv ${content} not found`)
+          console.log(`Csv ${content} - with link ${csv} not found`)
+          return acc
         }
         const [headers, ...rows] = parseCsv(content.content.file.toString(), { skipEmptyLines: true, trim: true })
         const headersText = `| ${headers.map((c: string) => c.trim()).join(" | ")} | \n`
@@ -40,12 +41,16 @@ const renameLinks = (text: string, refMap: ContentMap): string => {
       } else {
         const formattedLink = decodeURI(link)
           .split("/")
-          .map(c => {
-            if (!refMap.has(c)) throw new Error(`${c} not found in map`)
-            return refMap.get(c)!.name
+          .filter(c => {
+            if (!refMap.has(c)) {
+              console.log(`${c} not found in map`)
+              return false
+            }
+            return true
           })
+          .map(c => refMap.get(c)!.name)
           .join("/")
-        const linkRegx = new RegExp(`(${link})`, "g")
+        const linkRegx = new RegExp(`(${link.replace("(", "\\(").replace(")", "\\)")})`, "g")
         return acc.replace(linkRegx, formattedLink)
       }
     }, text) ?? text

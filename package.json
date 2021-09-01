@@ -16,7 +16,7 @@
     "clean-notion-export": "./dist/tsc/cli.js"
   },
   "scripts": {
-    "cli": "ts-node src/cli.ts --entry C:\\Users\\Luan.machado\\Downloads\\Export-92664457-ad74-4e22-9136-452bbfb8657c --output output",
+    "cli": "ts-node src/cli.ts --entry C:\\Users\\Luan.machado\\Documents\\tests-notion\\Export-21c9a59e-ba96-42a4-a3dc-0682757cb259 --output output",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "jest",
     "clean": "rm -rf dist build package",

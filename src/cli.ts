@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { join } from 'path'
+import { join, isAbsolute } from 'path'
 import { exit } from 'process'
 import yargs from 'yargs'
 
@@ -15,6 +15,6 @@ if (!outputPath || !entryPath) {
   exit(1)
 }
 const currentPath = process.cwd()
-const contentNodes = listDirRecursive(join(currentPath, entryPath))
+const contentNodes = listDirRecursive(isAbsolute(entryPath) ? entryPath : join(currentPath, entryPath))
 const output = mapToNewNames(contentNodes)
 writeToFile(join(currentPath, outputPath), output)
