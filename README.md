@@ -1,9 +1,15 @@
 # Notion export cleaner
 
+[npm package](https://www.npmjs.com/package/clean-notion-export)
+
 ## Running
 
 ```
-npx notion-export-cleaner --entry ./path/to/folder --output ./my-formatted-notion-stuff
+npm install -g clean-notion-export
+clean-notion-export --entry ./path/to/folder --output ./my-formatted-notion-stuff
+
+// or
+npx clean-notion-export --entry ./path/to/folder --output ./my-formatted-notion-stuff
 ```
 
 ## What it does
